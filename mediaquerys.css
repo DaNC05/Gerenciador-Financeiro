@@ -1,0 +1,56 @@
+@media (max-width: 1280px) {
+    h1{
+        font-size:2rem;
+    }
+    p{
+        font-size:1rem;
+    }
+   h2{
+        font-size:1.5rem !important;
+    }
+    
+    
+    #caixaSaldo{
+        width: 90%;
+        height: 100px;
+        left: 5%;
+    }	
+    #container{
+         flex-direction: column;
+    }
+    #caixaLancamento{
+        width: 90%;
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+    #caixaLancamento h2 {
+        margin-top: 30px;
+    }
+    #formLancamento{
+        width: 90%;
+        margin-bottom: 10%;
+    }
+    
+    .campo{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .botao{
+        width: 100%;
+        margin-top: 10px;
+    }
+    #caixaHistorico{
+        width: 90%;
+        margin-top: 30px;
+    }
+    .filtro{
+        width: 70%;
+        margin-top: 10px;
+    }
+    th{
+        font-size: 1.1rem;
+        padding:10px;
+    }
+}
+  
+ 

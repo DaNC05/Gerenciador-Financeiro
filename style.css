@@ -1,0 +1,286 @@
+:root{
+    --corTextoDark: #ccc;
+    --corTextoDarkSecundary: #fff;
+    --bgDark: #202020;
+    --bgDarkSecundary: #424242;
+    --corTextoLight:var(--bgDark);
+    --corTextoLightSecundary:var(--bgDarkSecundary);
+    --bgLight:#ffe;
+    --bgLightSecundary:#ccc;
+}
+
+* {
+    font-family: Segoe UI, sans-serif;
+
+}
+
+.dark-theme {
+    background-color:var(--bgDark);
+}
+
+section {
+
+    height: 50vh;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--corTextoDarkSecundary);
+}
+
+p {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--corTextoDarkSecundary);
+}
+
+#caixaSaldo {
+    background-color: var(--bgDarkSecundary);
+    margin-top: 3%;
+    width: 63%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 1%;
+    height: 130px;
+    left: 18.5%;
+}
+
+#caixaSaldo h2 {
+    text-align: start;
+    padding-left: 30px;
+    padding-top: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--corTextoDarkSecundary);
+}
+
+#caixaSaldo strong {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--corTextoDarkSecundary);
+}
+.dark-theme #switcher{
+    background-color: var(--bgDarkSecundary);
+    border-color: #ccc;
+    color:#ccc;
+}
+.dark-theme h2{
+    color:#ccc;
+}
+.dark-theme #caixaHistorico{
+    color:#ccc;
+}
+#switcher{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+    
+    width: 30px;
+    height: 40px;
+    border-radius: 20%;
+}
+
+#caixaLancamento {
+    background-color: var(--bgDarkSecundary);
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    width: 30%;
+    height: 70vh;
+    margin-right: 3%;
+}
+
+#formLancamento h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    
+    color: var(--corTextoDarkSecundary);
+}
+
+.campo {
+    background-color: var(--bgDark);
+    border-radius: 0.5%;
+    width: 20vw;
+    height: 50px;
+    margin: 10px auto;
+    padding: 10px;
+    color: #ccc !important; 
+}
+
+.campo:focus {
+    outline: none;
+    border: 1px solid var(--corTextoDark);
+}
+
+.botao {
+    background-color: var(--bgDark);
+    border-radius: 0.5%;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    width: 20vw;
+    height: 40px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.botao:hover {
+    background-color: var(--corTextoDark);
+    color: #202020;
+}
+
+.botao:active {
+    background-color: var(--corTextoDark);
+    color: #202020;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#caixaHistorico {
+    background-color: var(--bgDarkSecundary);
+    width: 30%;
+    height: 70vh;
+    overflow-y: scroll;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5%;
+}
+#caixaHistorico h2 {
+  margin-top: 20px !important;
+
+}
+
+.filtro {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    height: 50px;
+}
+
+thead {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+   
+
+}
+
+th {
+    border-bottom: 1px solid var(--corTextoDark);
+    font-size: 1rem;
+    font-weight: 400;
+    
+}
+
+tbody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+tr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+td {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-right: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    vertical-align: center;
+    border-bottom: 1px solid var(--corTextoDark);
+
+}
+
+#remover {
+    background-color: #eb0d0d;
+    color: #fff;
+    width: 20px;
+    cursor:pointer;
+    border: none;
+    transition: 500ms;
+    border-radius: 50%;
+}
+
+#remover:hover {
+    background-color: var(--corTextoDark);
+    color: #202020;
+}
+
+.light-theme{
+   background-color:var(--bgLight);
+}
+.light-theme p {
+   color: var(--corTextoLightSecundary);
+}
+.light-theme h1 {
+    color: var(--corTextoLightSecundary) !important;
+}
+
+.light-theme h2 {
+    color: var(--corTextoLightSecundary) !important;
+}
+.light-theme #caixaSaldo {
+    background-color: var(--bgLightSecundary);
+}
+
+.light-theme #caixaLancamento {
+    background-color: var(--bgLightSecundary);
+}
+
+.light-theme #caixaHistorico {
+    background-color: var(--bgLightSecundary);
+    color:var(--bgDark);
+    border-color: var(--bgDark);
+}
+
+.light-theme .campo{
+    background-color: var(--bgLight);
+    border-color:var(--bgLight) ;
+    color: #202020 !important; 
+}
+
+.light-theme .fas{
+    background-color:#ccc !important;
+    color:#424242 !important;
+}
+.light-theme #saldo{
+
+    color: var(--corTextoLightSecundary) !important;
+
+}
+
+.light-theme option{
+    border-color:var(--bgLight) ;  
+}
+
+.light-theme .botao:hover{
+    background-color: #424242;
+}
+
+.light-theme th{
+    border-color:var(--bgDark); 
+}

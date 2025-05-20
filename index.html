@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Finanças</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="mediaquerys.css">
+  <script src="https://kit.fontawesome.com/967df10d2c.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="dark-theme">
+  <main>
+    <h1>Finanças Pessoais</h1>
+    <p>Bem-vindo ao seu gerenciador de finanças pessoais! Aqui você pode acompanhar suas receitas e despesas.</p>
+    <section>
+      <div id="caixaSaldo">
+        <h2>Saldo Atual:<br><strong id="saldo">R$ 0,00</strong></h2>
+        <button id="switcher" class="fas fa-sun"></button>
+      </div>
+      <div id="container">
+        <div id="caixaLancamento">
+          <h2>Adicionar Lançamentos</h2>
+          <form id="formLancamento">
+
+
+            <input type="text" class="campo" id="nomeLancamento" placeholder="Nome" required><br>
+
+            <input type="number" class="campo" id="valorLancamento" placeholder="Valor" required><br>
+
+            <select id="tipoLancamento" class="campo" required><br>
+              <option value="Entrada">Entrada</option>
+              <option value="Saída">Saída</option>
+            </select><br>
+
+            <input type="date" id="dataLancamento" class="campo" required><br>
+            <button type="button" id="button" class="botao">Adicionar </button>
+
+          </form>
+        </div>
+        <div id="caixaHistorico">
+          <table id="tabelaHistorico">
+            <h2>Lançamentos</h2>
+            <select class="campo filtro" id="filtroLancamento">
+              <option value="todos">Todos</option>
+              <option value="entrada">Entradas</option>
+              <option value="saida">Saídas</option>
+              <option value="hoje">Hoje</option>
+              <option value="ontem">Ontem</option>
+              <option value="semana">Esta Semana</option>
+              <option value="mes">Este Mês</option>
+            </select>
+            <thead>
+             
+            </thead>
+            <tbody id="historicoLancamentos">
+              <!-- Os lançamentos serão adicionados aqui dinamicamente -->
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
