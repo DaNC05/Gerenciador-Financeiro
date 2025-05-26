@@ -49,6 +49,22 @@ p {
     left: 18.5%;
 }
 
+.positivo{
+  color: rgb(4, 255, 4);
+}
+.negativo {
+  color: red;
+}
+.entrada {
+  color: rgb(4, 255, 4);
+  font-weight: bold;
+}
+
+.saida {
+  color: red;
+  font-weight: bold;
+}
+
 #caixaSaldo h2 {
     text-align: start;
     padding-left: 30px;
@@ -61,7 +77,6 @@ p {
 #caixaSaldo strong {
     font-size: 2rem;
     font-weight: bold;
-    color: var(--corTextoDarkSecundary);
 }
 .dark-theme #switcher{
     background-color: var(--bgDarkSecundary);
@@ -155,7 +170,8 @@ p {
     background-color: var(--bgDarkSecundary);
     width: 30%;
     height: 70vh;
-    overflow-y: scroll;
+    overflow-y:auto;
+    overflow-x: hidden;
     margin-top: 15%;
     display: flex;
     flex-direction: column;
@@ -205,14 +221,13 @@ tr {
 
 td {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 400;
-    margin-right: 10px;
-    padding-left: 50px;
-    padding-right: 50px;
-    vertical-align: center;
-    border-bottom: 1px solid var(--corTextoDark);
-
+    
+    padding-left: 1%;
+    padding-right: 1%;
+    letter-spacing: 2px;
+    border: 1px solid var(--corTextoDark);
 }
 
 #remover {
@@ -222,7 +237,9 @@ td {
     cursor:pointer;
     border: none;
     transition: 500ms;
-    border-radius: 50%;
+    border-radius: 30%;
+    font-size: small;
+    text-align: center;
 }
 
 #remover:hover {
@@ -267,9 +284,9 @@ td {
     background-color:#ccc !important;
     color:#424242 !important;
 }
-.light-theme #saldo{
+.light-theme .entrada, .light-theme .positivo{
 
-    color: var(--corTextoLightSecundary) !important;
+    color: #005c05;
 
 }
 
@@ -283,4 +300,9 @@ td {
 
 .light-theme th{
     border-color:var(--bgDark); 
+    
+}
+
+.light-theme td{
+    border: 1px solid var(--corTextoLight);
 }
