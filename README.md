@@ -23,9 +23,7 @@ Projeto simples e funcional de **gerenciador financeiro** feito com **HTML, CSS 
 ---
 
 ## 📸 Demonstração
-https://www.linkedin.com/feed/update/urn:li:activity:7325218714260283392/
-
-> 💡 Você pode hospedar o projeto no GitHub Pages, Netlify ou Vercel para demonstrar ao vivo.
+https://danc05.github.io/Gerenciador-Financeiro/
 
 ---
 
