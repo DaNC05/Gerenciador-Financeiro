@@ -10,6 +10,9 @@ Projeto simples e funcional de **gerenciador financeiro** feito com **HTML, CSS 
 - ✅ Listar todas as transações
 - ✅ Remover transações
 - ✅ Interface responsiva
+- 🎨 Temas (dark/light mode)
+- 💾 Armazenar transações com localStorage
+
 
 ## 🧪 Tecnologias utilizadas
 
@@ -53,14 +56,12 @@ Organização de estrutura HTML e estilos com CSS
 
 Prática de boas práticas com código limpo e reutilizável
 
-🌱 Melhorias futuras
-🔒 Validação de entrada do usuário
+🌱 Melhorias futuras:
 
-💾 Armazenar transações com localStorage
+🔒 Validação de entrada do usuário
 
 📊 Gráficos de despesas e receitas com Chart.js
 
-🎨 Temas (dark/light mode)
 
 👨‍💻 Autor
 Daniel Nogueira de Carvalho
