@@ -12,6 +12,7 @@ Projeto simples e funcional de **gerenciador financeiro** feito com **HTML, CSS 
 - ✅ Interface responsiva
 - 🎨 Temas (dark/light mode)
 - 💾 Armazenar transações com localStorage
+- 📊 Gráfico com Chart.js
 
 
 ## 🧪 Tecnologias utilizadas
@@ -54,11 +55,9 @@ Organização de estrutura HTML e estilos com CSS
 
 Prática de boas práticas com código limpo e reutilizável
 
-🌱 Melhorias futuras:
 
-🔒 Validação de entrada do usuário
 
-📊 Gráficos de despesas e receitas com Chart.js
+
 
 
 👨‍💻 Autor
