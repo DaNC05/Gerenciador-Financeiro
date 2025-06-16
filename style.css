@@ -99,7 +99,9 @@ p {
     height: 40px;
     border-radius: 20%;
 }
-
+#caixaLancamento h2{
+       margin-top: -10px;
+}
 #caixaLancamento {
     background-color: var(--bgDarkSecundary);
     margin-top: 15%;
@@ -177,6 +179,7 @@ p {
     flex-direction: column;
     align-items: center;
     border-radius: 5%;
+    margin-right: 3% ;
 }
 #caixaHistorico h2 {
   margin-top: 20px !important;
@@ -223,12 +226,32 @@ td {
     text-align: center;
     font-size: 0.9rem;
     font-weight: 400;
-    
+    width: 50%;
     padding-left: 1%;
     padding-right: 1%;
     letter-spacing: 2px;
-    border: 1px solid var(--corTextoDark);
+     border: 1px solid var(--corTextoDark);
+
 }
+
+#containerGraph{
+background-color: var(--bgDarkSecundary);
+    width: 30%;
+    height: 40vh;
+    overflow-y:auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    border-radius: 2%;
+    margin-right: 3% ;
+    margin-top: 1.5%;
+    overflow: hidden;
+}
+#containerGraph h2{
+     padding: 1%;
+}
+
 
 #remover {
     background-color: #eb0d0d;
@@ -273,6 +296,11 @@ td {
     color:var(--bgDark);
     border-color: var(--bgDark);
 }
+.light-theme #containerGraph{
+     background-color: var(--bgLightSecundary);
+    color:var(--bgDark);
+    border-color: var(--bgDark);
+}
 
 .light-theme .campo{
     background-color: var(--bgLight);
@@ -306,3 +334,4 @@ td {
 .light-theme td{
     border: 1px solid var(--corTextoLight);
 }
+

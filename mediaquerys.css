@@ -1,57 +1,78 @@
 @media (max-width: 1206px) {
-    h1{
-        font-size:2rem;
+    h1 {
+        font-size: 2rem;
     }
-    p{
-        font-size:1rem;
+
+    p {
+        font-size: 1rem;
     }
-   h2{
-        font-size:1.5rem !important;
+
+    h2 {
+        font-size: 1.5rem !important;
     }
-    
-    
-    #caixaSaldo{
+
+    td {
+        letter-spacing: 0;
+
+    }
+
+    #caixaSaldo {
         width: 90%;
         height: 100px;
         left: 5%;
-    }	
-    #container{
-         flex-direction: column;
     }
-    #caixaLancamento{
+
+    #container {
+        flex-direction: column;
+    }
+
+    #caixaLancamento {
         width: 90%;
         margin-top: 150px;
         margin-left: 20px;
     }
-    #caixaLancamento h2 {
-        margin-top: 30px;
-        padding-top:50px;
-    }
-    #formLancamento{
+
+    #formLancamento {
         width: 90%;
-        margin-bottom: 10%;
+        
     }
-    
-    .campo{
+
+    .campo {
         width: 100%;
         margin-top: 10px;
     }
-    .botao{
+
+    .botao {
         width: 100%;
         margin-top: 10px;
     }
-    #caixaHistorico{
+
+    #caixaHistorico {
         width: 90%;
         margin-top: 30px;
     }
-    .filtro{
+
+    .filtro {
         width: 70%;
         margin-top: 10px;
     }
-    th{
+
+    th {
         font-size: 1.1rem;
-        padding:10px;
+        padding: 10px;
+    }
+
+    #containerGraph {
+        width: 90%;
+        margin-top: 30px;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+    canvas{
+       max-width: 400px !important;
+      margin-bottom: 100px !important;
+       height: 250px;
+       transform: translateY(-20px);
     }
 }
-  
- 

@@ -1,7 +1,74 @@
-
+let btnTema = document.getElementById("switcher");
+let body = document.querySelector("body");
+const filtro = document.getElementById("filtroLancamento");
 const tbody = document.getElementById('historicoLancamentos');
-const saldo =   document.getElementById("saldo");
+const saldo = document.getElementById("saldo");
 let saldoInicial = 0;
+
+let xValues = [];
+let yValues = [];
+let barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+let chart; // Define fora para manter referência global
+
+function criarGrafico() {
+  let cor = body.classList.contains('dark-theme') ? '#fff' : '#424242';
+
+  if (chart) chart.destroy(); // Destroi gráfico anterior se existir
+
+  chart = new Chart(document.getElementById('myChart').getContext('2d'), {
+    type: "doughnut",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color:cor
+          }
+        }
+        }
+      }
+    }
+  );
+}
+
+
+// Função para atualizar dados do gráfico
+function atualizarGrafico() {
+  // Limpa os arrays
+  xValues.length = 0;
+  yValues.length = 0;
+
+  const dadosAgrupados = {};
+
+  // Agrupa os valores por nome
+  listaTransacoes.forEach(transacao => {
+    if (!dadosAgrupados[transacao.nome]) {
+      dadosAgrupados[transacao.nome] = 0;
+    }
+    dadosAgrupados[transacao.nome] += Number(transacao.valor);
+  });
+
+  // Preenche novamente os arrays
+  for (let nome in dadosAgrupados) {
+    xValues.push(nome);
+    yValues.push(dadosAgrupados[nome]);
+  }
+
+  criarGrafico();
+}
 
 function salvar(transacoes) {
   localStorage.setItem('transacoes', JSON.stringify(transacoes))
@@ -13,12 +80,20 @@ function carregar() {
 }
 
 function renderizar(transacao) {
- // Validação dos campos
-  if (!transacao.nome || !transacao.valor || !transacao.data) {
-    alert("Por favor, preencha todos os campos!");
-    return;
+  let indice = xValues.indexOf(transacao.nome);
+  if(indice != -1){
+    let valores = Number(yValues[indice])  + Number(transacao.valor)
+    xValues.splice(indice,1)
+    yValues.splice(indice,1)
+    yValues.push(valores)
+   xValues.push(transacao.nome)
+     
   }
-
+  else{
+   xValues.push(transacao.nome);
+   yValues.push(transacao.valor);
+  }
+  criarGrafico();
   // Formata a data
   const dataObj = new Date(transacao.data);
   const dataFormatada = dataObj.toLocaleDateString('pt-BR');
@@ -30,30 +105,45 @@ function renderizar(transacao) {
   remover.addEventListener("click", function () {
     if (confirm("Deseja realmente remover este lançamento?")) {
       // Ajusta o saldo ao remover
+      
       if (transacao.tipo === "Entrada") {
         saldoInicial -= Number(transacao.valor);
+        atualizarGrafico()
       } else {
         saldoInicial += Number(transacao.valor);
+        atualizarGrafico()
       }
- saldo.textContent = `R$ ${saldoInicial.toFixed(2)}`;
-  if (Number(saldoInicial) < 0) {
-  saldo.classList.add("negativo");
-  saldo.classList.remove("positivo");
-}else if(Number(saldoInicial) === 0){
-  saldo.classList.remove("positivo");
-  saldo.classList.remove("negativo");
-}
-  else{
-  saldo.classList.add("positivo");
-  saldo.classList.remove("negativo");
-}
+      saldo.textContent = `R$ ${saldoInicial.toFixed(2)}`;
+      if (Number(saldoInicial) < 0) {
+        saldo.classList.add("negativo");
+        saldo.classList.remove("positivo");
+      } else if (Number(saldoInicial) === 0) {
+        saldo.classList.remove("positivo");
+        saldo.classList.remove("negativo");
+      }
+      else {
+        saldo.classList.add("positivo");
+        saldo.classList.remove("negativo");
+      }
+
+       const indexNome = xValues.indexOf(transacao.nome)
+       const indexValor = yValues.indexOf(transacao.valor)
+       if(indexNome !== -1 ){
+        yValues[indexNome]-= Number(transacao.valor)
+       }
+       
+       if(yValues[indexNome] <= 0){
+        xValues.splice(indexNome,1)
+       yValues.splice(indexValor,1)}
+
        linha.remove();
+       chart.update();
        listaTransacoes = listaTransacoes.filter(t => !(t.nome === transacao.nome && t.valor === transacao.valor && t.data === transacao.data && t.tipo === transacao.tipo));
-salvar(listaTransacoes);
+       salvar(listaTransacoes);
     }
   });
 
-    // Cria nova linha na tabela
+  // Cria nova linha na tabela
   let linha = document.createElement("tr");
   linha.setAttribute("data-tipo", transacao.tipo.toLowerCase());
   linha.setAttribute("data-data", transacao.data); // Armazena a data no formato YYYY-MM-DD
@@ -72,48 +162,50 @@ salvar(listaTransacoes);
   } else {
     saldoInicial -= Number(transacao.valor);
   }
- saldo.textContent = `R$ ${saldoInicial.toFixed(2)}`;
+  saldo.textContent = `R$ ${saldoInicial.toFixed(2)}`;
   if (Number(saldoInicial) < 0) {
-  saldo.classList.add("negativo");
-  saldo.classList.remove("positivo");
-}  else{
-  saldo.classList.add("positivo");
-  saldo.classList.remove("negativo");
-}
+    saldo.classList.add("negativo");
+    saldo.classList.remove("positivo");
+  } else {
+    saldo.classList.add("positivo");
+    saldo.classList.remove("negativo");
+  }
 
   // Adiciona classe para estilo
   linha.classList.add(transacao.tipo === "Entrada" ? "entrada" : "saida");
 
   // Adiciona linha à tabela
   tbody.appendChild(linha);
-
-
-
   
+
+ atualizarGrafico()
 }
 
 let listaTransacoes = carregar();
 listaTransacoes.forEach(transacao => {
   renderizar(transacao)
-})
-let btnTema = document.getElementById("switcher");
-let body = document.querySelector("body");
-const filtro = document.getElementById("filtroLancamento");
+});
+criarGrafico();
+
 
 // Trocador de tema
 btnTema.addEventListener("click", function () {
   if (body.classList.contains("dark-theme")) {
     body.classList.remove("dark-theme");
-    btnTema.classList.remove("fa-sun");
     body.classList.add("light-theme");
+    btnTema.classList.remove("fa-sun");
     btnTema.classList.add("fa-moon");
-  }
-  else {
+    cor = '#424242';
+  } else {
     body.classList.remove("light-theme");
-    btnTema.classList.remove("fa-moon");
     body.classList.add("dark-theme");
+    btnTema.classList.remove("fa-moon");
     btnTema.classList.add("fa-sun");
+    cor = '#ccc';
   }
+
+ criarGrafico();
+chart.update();
 });
 
 let botao = document.getElementById('button');
@@ -127,13 +219,22 @@ botao.addEventListener("click", () => {
     data: document.getElementById("dataLancamento").value,
 
   }
+  if (transacao.valor < 0) {
+    alert("O valor não pode ser negativo")
 
+  }
+  else if (!transacao.nome || !transacao.valor || !transacao.data) {
+    alert("Por favor, preencha todos os campos!");
+    return;
+  }
+  else {
 
-  listaTransacoes.push(transacao)
-  salvar(listaTransacoes)
-renderizar(transacao);
-document.getElementById("formLancamento").reset();
-aplicarFiltros();
+    listaTransacoes.push(transacao)
+    salvar(listaTransacoes)
+    renderizar(transacao);
+    document.getElementById("formLancamento").reset();
+    aplicarFiltros();
+  }
 
 });
 
@@ -193,4 +294,4 @@ filtro.addEventListener('change', aplicarFiltros);
 // Aplica filtros inicialmente
 aplicarFiltros();
 
- 
+

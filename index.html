@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="mediaquerys.css">
   <script src="https://kit.fontawesome.com/967df10d2c.js" crossorigin="anonymous"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+  </script>
 </head>
 
 <body class="dark-theme">
@@ -29,7 +30,7 @@
 
             <input type="text" class="campo" id="nomeLancamento" placeholder="Nome" required><br>
 
-            <input type="number" class="campo" id="valorLancamento" placeholder="Valor" required><br>
+            <input type="number" class="campo" min="0" id="valorLancamento" placeholder="Valor" required><br>
 
             <select id="tipoLancamento" class="campo" required><br>
               <option value="Entrada">Entrada</option>
@@ -54,15 +55,22 @@
               <option value="mes">Este Mês</option>
             </select>
             <thead>
-             
+
             </thead>
             <tbody id="historicoLancamentos">
               <!-- Os lançamentos serão adicionados aqui dinamicamente -->
-              
+
             </tbody>
           </table>
         </div>
+        <div id="containerGraph">
+          <h2>Gráfico</h2>
+
+         <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+         
       </div>
+      </div>
+      
     </section>
   </main>
   <script src="script.js"></script>
